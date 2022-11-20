@@ -42,6 +42,7 @@ See the `~/.xbindkeysrc` commands for some idea of how to use this. Other than t
 
 ## Todos
 
+- Reduce the flickering on window resizing/moving. Most of it is caused by doing hide/raise/resize for all windows to be safe, rather than just the necessary windows.
 - Resize windows vertically.
 - Improve positioning/resizing/alignment of windows.
   - Dig deeper in the X documentation, see what's possible without actually being a window manager. Or:
