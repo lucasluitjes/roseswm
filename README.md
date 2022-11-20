@@ -7,7 +7,7 @@ It is an experiment to see if it is possible to combine the polish and ease-of-u
 Pros:
 
 - You get all the polish and GUI that a modern desktop environment has to offer.
-- The whole thing is written in ruby, no need to learn C if you want to change things.
+- The whole thing is written in ruby, no need to use C if you want to change things.
 - Controllable through a UNIX socket, so most simple behaviour can be scripted in any language you like.
 
 Cons:
