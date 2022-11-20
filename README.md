@@ -1,6 +1,6 @@
 # RosesWM
 
-RosesWM is not actually a window manager. Instead it uses `xbindkeys`, `wmctrl`, `xdotool`, `xwininfo`, and `zenity` to implement tiling behaviour on top of a normal desktop environment like XFCE. Heavily inspired by wmii.
+RosesWM is not actually a window manager. Instead it uses `xbindkeys`, `wmctrl`, `xdotool`, `xwininfo`, `xprop`, and `zenity` to implement tiling behaviour on top of a normal desktop environment like XFCE. Heavily inspired by wmii.
 
 It is an experiment to see if it is possible to combine the polish and ease-of-use of a modern desktop environment, with the power of a tiling window manager. 
 
@@ -26,7 +26,7 @@ Note: this project is pretty rough around the edges. There is no configuration f
 To run: 
 
 - Clone this repository.
-- Make sure the following tools are all linstalled: `ruby`, `xbindkeys`, `wmctrl`, `xdotool`, `xwininfo`, `xrandr`, and `zenity`.
+- Make sure the following tools are all linstalled: `ruby`, `xbindkeys`, `wmctrl`, `xdotool`, `xwininfo`, `xprop`, `xrandr`, and `zenity`.
 - Set up `~/.xbindkeysrc` and reload/restart xbindkeys. See an example at the bottom of this README.
 - Disable/change any interfering keyboard combinations. In XFCE you'll want to search the settings for the word "key" and go to each menu. Last time I found at least four places with potentially interfering keyboard combinations.
 
