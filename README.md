@@ -15,6 +15,10 @@ Cons:
 - `wmctrl`/`xdotool`/`xwininfo` offer a lot, but in the end RosesWM has less control over window behaviour than an actual window manager. 
 - Due to the above, getting windows sized/positioned/aligned pixel perfect requires increasingly hacky solutions and won't always work. This was particularly problematic on GNOME but also occurs with KDE/XFCE.
 
+Screenshot of RosesWM running on top of XFCE:
+
+![example screenshot](https://raw.githubusercontent.com/lucasluitjes/roseswm/main/screenshot.png)
+
 ## Running it
 
 Note: this project is pretty rough around the edges. There is no configuration file, just a few constants in `run.rb`. During development I've been running it on xfce4. I don't know how well it does on other desktop environments.
