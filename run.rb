@@ -1,11 +1,22 @@
 require 'pp'
 require 'json'
-require 'pry' rescue nil
 require 'socket'
 require 'thread'
+begin
+  require 'pry' 
+rescue LoadError
+  puts 'pry not found'
+end
 
 require_relative 'lib/manager'
 require_relative 'lib/controller'
+
+module LocalConfig # to be overridden
+end
+begin
+require_relative 'local_config'
+rescue LoadError
+end
 
 SET_GEOMETRY_ITERATIONS = 1
 
@@ -131,5 +142,8 @@ listen do |cmd|
     end
   else
     controller.process(cmd)
+    if LocalConfig.respond_to?(:after_cmd)
+      LocalConfig.after_cmd(m, cmd)
+    end
   end
 end

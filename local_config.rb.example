@@ -1,0 +1,5 @@
+module LocalConfig
+  def self.after_cmd(m,cmd)
+    # custom behaviour
+  end
+end

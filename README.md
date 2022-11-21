@@ -29,6 +29,7 @@ To run:
 - Make sure the following tools are all linstalled: `ruby`, `xbindkeys`, `wmctrl`, `xdotool`, `xwininfo`, `xprop`, `xrandr`, and `zenity`.
 - Set up `~/.xbindkeysrc` and reload/restart xbindkeys. See an example at the bottom of this README.
 - Disable/change any interfering keyboard combinations. In XFCE you'll want to search the settings for the word "key" and go to each menu. Last time I found at least four places with potentially interfering keyboard combinations.
+- Optionally copy `local_config.rb.example` to `local_config.rb` (janky local hooks system).
 
 Then cd to this repository and run `ruby run.rb`.
 
