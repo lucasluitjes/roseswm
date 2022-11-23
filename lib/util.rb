@@ -36,14 +36,15 @@ module Util
     `wmctrl -ir #{id} -b toggle,maximized_vert,maximized_horz`
     `wmctrl -ir #{id} -b remove,maximized_vert,maximized_horz`
 
-    # once works fine in xfce4, but in gnome some windows would move
-    # to slightly-off positions. Running windowmove/windowsize a few 
-    # times with a short sleep seemed to improve this behaviour.
-   SET_GEOMETRY_ITERATIONS.times do 
-      if get_geometry(id) != values
+    `xdotool windowmove #{id} #{values[:x]} #{values[:y]}`
+
+    geom_iterations = values[:geom_iterations]
+    (geom_iterations || SET_GEOMETRY_ITERATIONS).times do |i|
+      sleep 0.05 if i > 0
+      if get_geometry(id).slice(:w, :h) != values.slice(:w, :h)
         `xdotool windowsize #{id} #{values[:w]} #{values[:h]}`
-        `xdotool windowmove #{id} #{values[:x]} #{values[:y]}`
-        sleep 0.05 if SET_GEOMETRY_ITERATIONS > 1
+      else
+        return
       end
     end
   end

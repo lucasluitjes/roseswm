@@ -20,6 +20,12 @@ require_relative 'local_config'
 rescue LoadError
 end
 
+# window size is slightly off with terminals (and maybe others
+# programs) sometimes. Repeating the windowsize command a few
+# times with a short sleep seems to rectify that. But it slows
+# down the redraw and increases flickering right now, because
+# we resize everything on every redraw instead of just when 
+# necessary. So it's configurable.
 SET_GEOMETRY_ITERATIONS = 1
 
 HOSTNAME = File.read('/etc/hostname').strip
@@ -29,7 +35,7 @@ RESIZE_AMOUNT = 50
 
 # persisting sizes is handy when you're developing, but if you want to quickly change the margins it's better to forget
 PERSIST_SIZES = true#false
-MARGIN = 10
+MARGIN = 15
 
 CREATE_SCENARIOS = false
 #CREATE_SCENARIOS = true

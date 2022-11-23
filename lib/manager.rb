@@ -115,7 +115,7 @@ class Manager
     end
   end
    
-  def redraw
+  def redraw(geom_iterations=nil)
     self.columns = columns.select {|n| !n.empty? }
     set_column_sizes
 
@@ -155,7 +155,8 @@ class Manager
               w: w_w,
               h: res_h - (MARGIN*2),
               x: w_x,
-              y: OFFSET_Y + MARGIN
+              y: OFFSET_Y + MARGIN,
+              geom_iterations: geom_iterations
             )
 
             if id == max
@@ -169,7 +170,8 @@ class Manager
               w: w_w,
               h: w_h,# - (MARGIN*2),
               x: w_x,
-              y: w_y + OFFSET_Y# + MARGIN + OFFSET_Y
+              y: w_y + OFFSET_Y,# + MARGIN + OFFSET_Y
+              geom_iterations: geom_iterations
             )
           end
         end

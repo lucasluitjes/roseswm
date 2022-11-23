@@ -15,7 +15,8 @@ class Controller
     :move_tile_or_float, 
     :focus_tile_or_float, 
     :start_terminal,
-    :force_resize
+    :force_resize,
+    :force_redraw
   ].flatten.map(&:to_sym)
 
   def initialize(m)
@@ -292,5 +293,9 @@ class Controller
   def force_resize
     m.set_column_sizes!
     m.redraw
+  end
+
+  def force_redraw
+    m.redraw(5)
   end
 end

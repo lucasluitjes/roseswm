@@ -44,6 +44,7 @@ See the `~/.xbindkeysrc` commands for some idea of how to use this. Other than t
 ## Todos
 
 - when cleaning up closed windows, make sure to also clean up fullscreen-window state. Right now if you close a fullscreen window you get a broken state.
+- fix or re-record tests
 - when going back and forth between maximized columns, focus the previously selected instead of the top one
 - Resize windows vertically.
 - Reduce the flickering on window resizing/moving. Most of it is caused by doing hide/raise/resize for all windows to be safe, rather than just the necessary windows. For raising/minimizing/positioning we could probably do it in a helper that checks the current state before doing actual changes.
@@ -138,6 +139,8 @@ It's an extremely verbose format, so you probably only want to do this if you ne
   Control+Shift+Mod2+Mod4 + l
 "echo 'close_window' |socat - UNIX-CONNECT:/tmp/roseswm"
   Shift+Alt+Mod2 + c
-"echo 'force_resize' |socat - UNIX-CONNECT:/tmp/roseswm"
+"echo 'force_redraw' |socat - UNIX-CONNECT:/tmp/roseswm"
   Shift+Alt+Mod2 + r
+"echo 'force_resize' |socat - UNIX-CONNECT:/tmp/roseswm"
+  Shift+Alt+Mod2 + s
 ```
