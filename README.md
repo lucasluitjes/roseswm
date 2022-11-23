@@ -43,8 +43,11 @@ See the `~/.xbindkeysrc` commands for some idea of how to use this. Other than t
 
 ## Todos
 
-- Reduce the flickering on window resizing/moving. Most of it is caused by doing hide/raise/resize for all windows to be safe, rather than just the necessary windows.
+- when cleaning up closed windows, make sure to also clean up fullscreen-window state. Right now if you close a fullscreen window you get a broken state.
+- when going back and forth between maximized columns, focus the previously selected instead of the top one
 - Resize windows vertically.
+- Reduce the flickering on window resizing/moving. Most of it is caused by doing hide/raise/resize for all windows to be safe, rather than just the necessary windows. For raising/minimizing/positioning we could probably do it in a helper that checks the current state before doing actual changes.
+- xfce terminals (and possibly other windows), particularly when margins are small-ish like 10px, will often be positioned slightly off. But if you redraw a few times they're eventually right. Maybe redraw in a loop until they're correct.
 - Improve positioning/resizing/alignment of windows.
   - Dig deeper in the X documentation, see what's possible without actually being a window manager. Or:
   - Per-application margin adjustments as a workaround.
