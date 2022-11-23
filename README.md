@@ -135,4 +135,6 @@ It's an extremely verbose format, so you probably only want to do this if you ne
   Control+Shift+Mod2+Mod4 + l
 "echo 'close_window' |socat - UNIX-CONNECT:/tmp/roseswm"
   Shift+Alt+Mod2 + c
+"echo 'force_resize' |socat - UNIX-CONNECT:/tmp/roseswm"
+  Shift+Alt+Mod2 + r
 ```

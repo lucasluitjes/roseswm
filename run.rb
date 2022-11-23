@@ -2,6 +2,8 @@ require 'pp'
 require 'json'
 require 'socket'
 require 'thread'
+Thread.abort_on_exception = true
+
 begin
   require 'pry' 
 rescue LoadError
@@ -27,7 +29,7 @@ RESIZE_AMOUNT = 50
 
 # persisting sizes is handy when you're developing, but if you want to quickly change the margins it's better to forget
 PERSIST_SIZES = true#false
-MARGIN = 20
+MARGIN = 10
 
 CREATE_SCENARIOS = false
 #CREATE_SCENARIOS = true
@@ -75,7 +77,6 @@ def pp_for_scenario(obj)
   result.gsub(/^/, "  ")
 end
 
-Thread.abort_on_exception = true
 Thread.new do
   loop do 
     $lock.synchronize do

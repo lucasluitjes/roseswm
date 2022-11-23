@@ -14,7 +14,8 @@ class Controller
   ALLOWED_CMDS = CMDS_REQUIRING_ACTIVE_WINDOW + [
     :move_tile_or_float, 
     :focus_tile_or_float, 
-    :start_terminal
+    :start_terminal,
+    :force_resize
   ].flatten.map(&:to_sym)
 
   def initialize(m)
@@ -286,5 +287,10 @@ class Controller
 
     m.redraw
     m.focus(id)
+  end
+
+  def force_resize
+    m.set_column_sizes!
+    m.redraw
   end
 end
