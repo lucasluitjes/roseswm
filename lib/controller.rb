@@ -258,9 +258,9 @@ class Controller
 
   def focus_tag(tag)
     if tag.to_i-1 != m.current_tag
-      m.columns.each {|n| n.each {|o| `xdotool windowminimize #{o}`} }
+      m.columns.map {|n| n.map {|o| Thread.new { `xdotool windowminimize #{o}`} } }.flatten.map(&:join)
       m.current_tag = tag.to_i-1
-      m.columns.each {|n| n.each {|o| `wmctrl -ia 0x#{o.to_i.to_s(16)}` }}
+      m.columns.map{|n| n.map{|o| Thread.new { `wmctrl -ia 0x#{o.to_i.to_s(16)}` }}}.flatten.map(&:join)
     
       m.redraw
       m.focus(m.columns.first.first) if m.columns.first&.first

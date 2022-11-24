@@ -138,6 +138,7 @@ class Manager
     else
       columns.each {|n| n.each {|o| `wmctrl -ia 0x#{o.to_i.to_s(16)}` }}
 
+      threads = []
       columns.each_with_index do |c, c_i|
         set_column_sizes! unless column_sizes[c_i]
 
@@ -165,17 +166,20 @@ class Manager
               `xdotool windowminimize #{id}`
             end
           else
-            set_geometry(
-              id,
-              w: w_w,
-              h: w_h,# - (MARGIN*2),
-              x: w_x,
-              y: w_y + OFFSET_Y,# + MARGIN + OFFSET_Y
-              geom_iterations: geom_iterations
-            )
+            threads << Thread.new do 
+              set_geometry(
+                id,
+                w: w_w,
+                h: w_h,# - (MARGIN*2),
+                x: w_x,
+                y: w_y + OFFSET_Y,# + MARGIN + OFFSET_Y
+                geom_iterations: geom_iterations
+              )
+            end
           end
         end
       end
+      threads.map(&:join)
     end
   end
 
