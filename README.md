@@ -46,7 +46,10 @@ See the `~/.xbindkeysrc` commands for some idea of how to use this. Other than t
 - fix or re-record tests. Probably need to re-write the backtick override. Because we're now multihreaded it now needs to find inputs in the array and delete them, instead of going sequentially.
 - when cleaning up closed windows, make sure to also clean up fullscreen-window state. Right now if you close a fullscreen window you get a broken state.
 - when going back and forth between maximized columns, focus the previously selected instead of the top one
+- when you close a window, the closest window should get focus (both vertical and horizontal)
+- when the resolution changes, we currently do a full reset. Instead, keep track of old res, and upon change recalculate all sizes for all columns to be the same relative to the old res
 - Resize windows vertically.
+- triggering resizing command a few times in a row is a little slow, because it does a full redraw every time. Instead, have a thread that checks every 0.5s (or something) if it's time for a redraw, and does the redraw inside of the mutex. Then the command should just mark ready for redraw rather than doing it itself.
 - Reduce the flickering on window resizing/moving. Most of it is caused by doing hide/raise/resize for all windows to be safe, rather than just the necessary windows. For raising/minimizing/positioning we could probably do it in a helper that checks the current state before doing actual changes.
 - Figure out a nice way to draw on the screen from ruby.
 - Draw a status bar for numbered tags.
