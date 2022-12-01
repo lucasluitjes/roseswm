@@ -79,6 +79,11 @@ class Manager
       n.scan(/^[^ ]+ /).flatten.first.to_i(16).to_s
     end
 
+    self.fullscreen = nil unless living_windows.include?(fullscreen)
+    column_maximized.each_with_index do |n, i|
+      column_maximized[i] = nil unless living_windows.include?(n)
+    end
+
     before_filtering = columns.dup
 
     columns.each_with_index do |n,i|

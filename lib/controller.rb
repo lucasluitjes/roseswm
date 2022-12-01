@@ -296,6 +296,8 @@ class Controller
   end
 
   def force_redraw
+    m.tags.map { |tag| tag[:columns].map {|n| n.map {|o| Thread.new { `xdotool windowminimize #{o}`}} } }.flatten.map(&:join)
+    m.columns.map{|n| n.map{|o| Thread.new { `wmctrl -ia 0x#{o.to_i.to_s(16)}` }}}.flatten.map(&:join)
     m.redraw(5)
   end
 end
