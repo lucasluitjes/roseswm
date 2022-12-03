@@ -21,14 +21,21 @@ module Util
 
     topbar = xprop.scan(/\d+, \d+, (-?\d+), \d+/).flatten.first.to_i
 
+    info = `xwininfo -id #{id}`
+
     values[:x] -= extents[0]
     values[:w] -= extents[1]
     values[:y] -= extents[2]
     values[:h] -= extents[3]
 
-    info = `xwininfo -id #{id}`
-    rel_x = info.scan(/Relative upper-left X: +(\d+)/).flatten.first.to_i
-    rel_y = info.scan(/Relative upper-left Y: +(\d+)/).flatten.first.to_i
+    # Sometimes windows have extra decorations or seem to misreport 
+    # their  extents. It seems to be dependent on the system 
+    # configuration and program in question. There is probably a way 
+    # to get/set more accurate geometry. But for now you can override 
+    # this hook to modify the values before they get applied: 
+    if LocalConfig.respond_to?(:after_cmd)
+      LocalConfig.before_set_geometry(id, values, info, extents)
+    end
 
     # xdotool currently doesn't handle windows that have been maximized 
     # or tiled by gnome itself, until you run these two commands. 
