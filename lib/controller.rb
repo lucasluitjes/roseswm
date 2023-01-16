@@ -263,7 +263,7 @@ class Controller
       m.columns.map{|n| n.map{|o| Thread.new { `wmctrl -ia 0x#{o.to_i.to_s(16)}` }}}.flatten.map(&:join)
     
       m.redraw
-      m.focus(m.columns.first.first) if m.columns.first&.first
+      m.focus(m.columns.first.first) if m.columns.first&.first && !m.fullscreen
     end
   end
 
