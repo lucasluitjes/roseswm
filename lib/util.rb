@@ -37,6 +37,8 @@ module Util
       LocalConfig.before_set_geometry(id, values, info, extents)
     end
 
+    return if get_geometry(id) == values
+
     # xdotool currently doesn't handle windows that have been maximized 
     # or tiled by gnome itself, until you run these two commands. 
     # (see: https://github.com/jordansissel/xdotool/issues/300)
